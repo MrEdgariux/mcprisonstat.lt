@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+/* Some basic CSS overrides */
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  font-family: "Be Vietnam Pro", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #060606;
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* End basic CSS override */
+.profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 3rem;
+  width: 90%;
+  max-width: 300px;
+  background-color: #1b2028;
+  border-radius: 16px;
+  position: relative;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  text-align: center;
+  color: #f1f3f3;
+  background-image: linear-gradient(135deg, rgba(117, 46, 124, 0.35), rgba(115, 74, 88, 0.1) 15%, #1b2028 20%, #1b2028 100%);
+}
+.profile:after {
+  content: "";
+  display: block;
+  top: -3px;
+  left: -3px;
+  bottom: -3px;
+  right: -3px;
+  z-index: -1;
+  position: absolute;
+  border-radius: 16px;
+  background-image: linear-gradient(135deg, #752e7c, #734a58 20%, #1b2028 30%, #2c333e 100%);
+}
+
+.profile-image {
+  border-radius: 11px;
+  overflow: hidden;
+  width: 175px;
+  height: 175px;
+  position: relative;
+}
+.profile-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.profile-username {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+}
+
+.profile-user-handle {
+  color: #7d8396;
+}
+
+.profile-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profile-actions > * {
+  margin: 0 0.25rem;
+}
+
+.btn {
+  border: 0;
+  background-color: transparent;
+  padding: 0;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+  transition: 0.15s ease;
+}
+.btn--primary {
+  border-radius: 99em;
+  background-color: #3772ff;
+  background-image: linear-gradient(135deg, #5587ff, #3772ff);
+  color: #fff;
+  padding: 0 1.375em;
+}
+.btn--primary:hover, .btn--primary:focus {
+  background-size: 150%;
+}
+.btn--icon {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  border: 3px solid #343945;
+  color: #7d8396;
+}
+.btn--icon i {
+  font-size: 1.25em;
+}
+.btn--icon:hover, .btn--icon:focus {
+  border-color: #7d8396;
+}
+
+.profile-links {
+  margin-top: 3.5rem;
+}
+
+.link {
+  text-decoration: none;
+  color: #7d8396;
+  margin-left: 0.375rem;
+  margin-right: 0.375rem;
+}
+.link i {
+  font-size: 1.25em;
+}/*# sourceMappingURL=about.css.map */
+
+body.blur {
+  filter: blur(5px); /* Blur efektas, kai informacijos langas atidarytas */
+  pointer-events: none; /* Blokuoja paspaudimus ant fono */
+}
+#loading-ekranas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Tamsintas fonas */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100; /* Užtikrina, kad loading ekranas būtų viršuje */
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Šviesiai pilka */
+  border-top: 16px solid #3498db; /* Mėlyna */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.klaida {
+  background-color: #b71c1c;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.uzdaryti {
+  /* Stilius mygtuko konteineriui */
+  display: block;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Atstumas nuo pranešimo teksto */
+}
+
+.uzdaryti:hover {
+  /* Stilius, kai pelės žymeklis užvedamas ant mygtuko */
+  background-color: #eee;
+}

@@ -1,0 +1,113 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #212121;
+    color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0; /* Pašalina numatytąsias paraštes */
+  }
+  
+  .darbingumo-korteles {
+    display: flex;             /* Naudojame flexbox išdėstymą */
+    flex-wrap: wrap;           /* Leidžiame kortelėms keisti eilutes */
+    justify-content: center; /* Pakeista į space-around */
+    gap: 20px;                 /* Tarpas tarp kortelių */
+    padding: 20px;
+  }
+  
+  .patvirtinimas {
+    background-color: #212121;
+    color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid;
+    border-right: 5px solid;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    display: flex;             /* Naudojame flexbox išdėstymą */
+    flex-direction: column;    /* Elementai išdėstomi vertikaliai */
+    flex: 0 0 250px; /* Fiksuotas plotis 250 */
+    justify-content:center; /* Tolygiai paskirstome erdvę tarp elementų */
+    align-items: center; 
+    box-sizing: border-box;
+  }
+
+  .patvirtinimas div {
+    width: 100%;                /* Užima visą tėvinio elemento plotį */
+    text-align: center;
+  }
+
+  .patvirtinimas div:first-child { /* Stilius datos tekstui */
+    font-weight: bold;
+    margin-bottom: 5px; /* Tarpas tarp datos ir laiko */
+  }
+  
+  /* Fono blur efektas */
+  body.blur {
+    filter: blur(5px); /* Blur efektas, kai informacijos langas atidarytas */
+    pointer-events: none; /* Blokuoja paspaudimus ant fono */
+  }
+  
+  .pasleptas {
+    display: none;
+  }
+  
+  .klaida {
+    background-color: #b71c1c;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  .darbingumo-info {
+    background-color: #212121;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    display: flex;           /* Naudojame flexbox */
+    flex-direction: column;  /* Elementai išdėstomi vertikaliai */
+    align-items: center;    /* Centruojame elementus horizontaliai */
+    text-align: center; /* Centruojame tekstą */
+  }
+  
+#diagrama {
+  width: 100%; 
+  display: flex;           /* Naudojame flexbox */
+  flex-direction: column;  /* Elementai išdėstomi vertikaliai */
+  align-items: center;    /* Centruojame elementus horizontaliai */
+  text-align: center; /* Centruojame tekstą */
+  height: 300px; /* Padidiname diagramos aukštį */
+}
+#loading-ekranas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Tamsintas fonas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* Užtikrina, kad loading ekranas būtų viršuje */
+  }
+  
+  .loader {
+    border: 16px solid #f3f3f3; /* Šviesiai pilka */
+    border-top: 16px solid #3498db; /* Mėlyna */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
