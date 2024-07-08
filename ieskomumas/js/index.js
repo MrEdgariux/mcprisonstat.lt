@@ -1,8 +1,22 @@
   // Funkcija žaidėjo duomenims gauti iš API
-  async function getPlayerData(nickas) {
-    const response = await fetch(`https://apis.mredgariux.site/v1/mcprison/ieskomumas/${nickas}`);
+  async function getPlayerData(nickas, token) {
+    const response = await fetch(`https://apis.mredgariux.site/v1/mcprison/ieskomumas`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nick: nickas, token })
+    });
     if (!response.ok) {
-      if (response.status == 404) {
+      if (response.status == 400) {
+        const atsakymas = await response.json();
+        if (atsakymas.error_id == 2) {
+          throw new Error('Patvirtinimas, kad neesate robotas nepavyko, bandykite dar kartą');
+        } else if (atsakymas.error_id == 1) {
+          throw new Error('Įveskite žaidėjo nicką');
+        }
+        throw new Error('Įvyko klaida gaunant rezultatus.');
+      } else if (response.status == 404) {
         throw new Error('Žaidėjas nėra ieškomas');
       } else if (response.status == 429) {
         throw new Error('Jūs pasiekėte užklausų riba, todėl naudotis svetainę galėsite tik po valandos');
@@ -74,16 +88,22 @@
   document.getElementById('searchForm').addEventListener('submit', async (event) => {
     event.preventDefault();
     const searchInput = document.getElementById('searchInput').value.trim();
+    const token = hcaptcha.getResponse();
+    console.log(token, searchInput);
 
-    if (searchInput) {
+    if (searchInput && token) {
       try {
-        const player = await getPlayerData(searchInput);
+        const player = await getPlayerData(searchInput, token);
         showPlayerModal(player);
+        hcaptcha.reset();
+        document.getElementById('searchInput').value = '';
       } catch (error) {
         showError(error.message);
       }
+    } else if (!token) {
+      showError('Patvirtinkite, kad nesate robotas');
     } else {
-      showError('Prašome įvesti žaidėjo vardą');
+      showError('Įveskite žaidėjo nicką');
     }
   });
 
